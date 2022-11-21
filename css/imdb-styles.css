@@ -1,0 +1,100 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+nav .navbar-brand {
+    font-family: 'Bangers', cursive;
+}
+
+nav ul li a i {
+    color: white;
+    margin-right: 2px;
+}
+
+#home-page .jumbotron {
+    Background-image: url(../Images/jumbotron.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+}
+
+#tv-shows .jumbotron {
+    Background-image: url(../Images/tv-show.jpeg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+}
+
+#films .jumbotron {
+    Background-image: url(../Images/films.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+}
+
+#my-list .jumbotron {
+    Background-image: url(../Images/jumbotron.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+}
+
+#search .jumbotron {
+    Background-image: url(../Images/search.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+}
+
+
+.category-text{
+    color:white;
+}
+
+#search h1{
+    color:white;
+} 
+
+#card-body {
+    background-color: transparent;
+    height:200px;
+    width:100px;
+}
+
+#results {
+    list-style: none;
+    padding: 0;
+}    
+
+
+p {
+    color:white;
+}
+
+.card-body:hover {
+    transform: translate3D(0,-1px,0) scale(1.03);
+    
+}
+
+.nav-link :active {
+    color:red;
+}
+
+.nav-link {
+    color:white;
+}
+
+.nav-link:hover {
+    color:red;
+}
+
+
+#Homepage-carousel {
+    width:400px;
+    height:600px;
+}
