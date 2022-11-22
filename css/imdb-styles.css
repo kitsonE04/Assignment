@@ -71,15 +71,15 @@ nav ul li a i {
     padding: 0;
 }    
 
+.card-text p {
+    color:black;
+}
 
 p {
     color:white;
 }
 
-.card-body:hover {
-    transform: translate3D(0,-1px,0) scale(1.03);
-    
-}
+
 
 .nav-link :active {
     color:red;
@@ -98,3 +98,4 @@ p {
     width:400px;
     height:600px;
 }
+
