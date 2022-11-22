@@ -15,7 +15,7 @@ const searchShow = (event) => {
                 console.log(value);
                 const tvshowElement = `<div class="col-md-3">
                 <div class="card bg-transparent mb-4"><div class="card-body">
-                <a href="results.html">
+                <a console.log(${value.show.id}) href="results.html">
                 <img alt="back-image" class="rounded" src="${value.show.image.medium}">
                 </div></div></div>`;
                 resultList.insertAdjacentHTML('beforeend', tvshowElement); 

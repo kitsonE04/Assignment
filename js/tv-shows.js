@@ -21,6 +21,15 @@ fetch(url + apiKey)
                             </div>
                             <div class="col-5">
                                 <p class="card-text">${value.summary}</p>
+                            </div>
+                            <div class="col-4" style="color:white">
+                                <div class="text-bg-danger rounded p-3">
+                                <h3 class="card-text" bg-black>
+                                <div class="row mb-2">Rating: ${value.rating.average}</div>
+                                <div class="row mb-2">Genre: ${value.genre}</div>
+                                <div class="row mb-2">Status: ${value.status}</div>
+                                <div class="row mb-2">Runtime: ${value.averageRuntime}</div>
+                                </h3></div>
                             </div></div>
                         </div>
                     </div>
