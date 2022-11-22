@@ -10,15 +10,22 @@ fetch(url + apiKey)
             console.log(value);
             const showElement = `
             <div class="col-md-12">
-            <div class="card bg-dark mb-4">
-            <div class="card-body"> 
-            <div class="container-fluid">
-            <h1 class="card-title">${value.name}</h1>
-            <div class="col-4">
-            <img alt="back-image" class="rounded" src="${value.image.medium}"><p class="card-text">${value.summary}</p>
-            <a target="_blank" href="${value.url}" class="btn btn-primary">View Show</a>
-            </div>
-            </div></div></div></div>`;
+                <div class="card bg-dark mb-4">
+                    <div class="card-body"> 
+                        <div class="container">
+                            <h1 class="card-title" style="color:white;">${value.name}</h1>
+                            <div class="container"></div>
+                            <div class="row">
+                            <div class="col-3">
+                                <img alt="back-image" class="rounded mt-4" src="${value.image.medium}">
+                            </div>
+                            <div class="col-5">
+                                <p class="card-text">${value.summary}</p>
+                            </div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
             resultList.insertAdjacentHTML('beforeend', showElement);
         });
     });

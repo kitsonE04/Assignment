@@ -79,7 +79,10 @@ p {
     color:white;
 }
 
-
+.card-body:hover {
+    transform: translate3D(0,-1px,0) scale(1.02);
+    
+}
 
 .nav-link :active {
     color:red;
