@@ -1,6 +1,9 @@
+var showID;
 const resultList = document.querySelector('#results');
 const url = 'https://api.tvmaze.com/shows?page=1&api-key=';
+var seasonUrl;
 const apiKey = '33319997-0bd6-4e13-83d7-082d40268c54';
+
 
 fetch(url + apiKey)
     .then((response) => response.json())
@@ -11,15 +14,15 @@ fetch(url + apiKey)
             const showElement = `
             <div class="col-md-12">
                 <div class="card bg-dark mb-4">
-                    <div class="card-body"> 
+                    <div class="card-body" onclick="seasonUrl = 'https://api.tvmaze.com/shows/${value.id}/seasons&api-key='; console.log(seasonUrl);"> 
                         <div class="container">
                             <h1 class="card-title" style="color:white;">${value.name}</h1>
                             <div class="container"></div>
                             <div class="row">
-                            <div class="col-3">
+                            <div class="col-2">
                                 <img alt="back-image" class="rounded mt-4" src="${value.image.medium}">
                             </div>
-                            <div class="col-5">
+                            <div class="col-6">
                                 <p class="card-text">${value.summary}</p>
                             </div>
                             <div class="col-4" style="color:white">
@@ -38,3 +41,4 @@ fetch(url + apiKey)
             resultList.insertAdjacentHTML('beforeend', showElement);
         });
     });
+    

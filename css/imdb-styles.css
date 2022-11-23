@@ -105,3 +105,8 @@ p {
 .card-text {
     text-align:center;
 }
+
+img[alt="back-image"] {
+    height:200px;
+    width:150px;
+ }
