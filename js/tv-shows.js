@@ -28,7 +28,7 @@ fetch(url)
                             <div class="col-4" style="color:white">
                                 <div class="text-bg-danger rounded p-3">
                                 <h3 class="card-text" bg-black>
-                                <div class="row mb-2">Rating: ${value.rating.average}</div>
+                                <div class="row mb-2">Rating: ${value.rating.average}/10</div>
                                 <div class="row mb-2">Genre: ${value.genre}</div>
                                 <div class="row mb-2">Status: ${value.status}</div>
                                 <div class="row mb-2">Runtime: ${value.averageRuntime} minutes</div>
