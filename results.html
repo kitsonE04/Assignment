@@ -12,12 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/imdb-styles.css" />
     <script src="https://kit.fontawesome.com/516dd5705f.js" crossorigin="anonymous"></script>
-    <script src="./js/search.js"></script>
-    <script src="./js/results.js"></script>
 </head>
 
 
-<body id="results-page">
+<body id="results-page" onload="showSeason(event)">
     <nav class="navbar navbar-expand-lg bg-black">
         <div class="container">
             <a class="navbar-brand" href="imdb.html" style="color:darkred;">Moviezine</a>
@@ -49,11 +47,22 @@
 
     <div class="container mt-5">
         <h1>Seasons</h1>
-        <div id="results" class="row mt-4"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/tv-shows.js">
+        const showSeason = (event) => {
+            event.preventDefault();
 
+            fetch(seasonUrl)
+                .then((response) => response.json())
+                .then((data) => {
+                    data.forEach(function (value) {
+                        console.log(value);
+                    });
+                });
+        }
+    </script>
 
 
 </body>
