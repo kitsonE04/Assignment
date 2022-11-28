@@ -125,7 +125,6 @@ fetch(showUrl)
 fetch(actorsUrl)
     .then((response) => response.json())
     .then((data) => {
-        // This is now a normal function
         data.forEach(function (value) {
             console.log(value);
             const actorElement = `
