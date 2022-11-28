@@ -52,61 +52,65 @@ nav ul li a i {
 }
 
 
-.category-text{
-    color:white;
+.category-text {
+    color: white;
 }
 
-#search h1{
-    color:white;
-} 
+#search h1 {
+    color: white;
+}
 
 #card-body {
     background-color: transparent;
-    height:200px;
-    width:100px;
+    height: 200px;
+    width: 100px;
+}
+
+h1 {
+    color: white;
 }
 
 #results {
     list-style: none;
     padding: 0;
-}    
+}
 
 .card-text p {
-    color:black;
+    color: black;
 }
 
 p {
-    color:white;
+    color: white;
 }
 
 .card-body:hover {
-    transform: translate3D(0,-1px,0) scale(1.02);
-    
+    transform: translate3D(0, -1px, 0) scale(1.02);
+
 }
 
 .nav-link :active {
-    color:red;
+    color: red;
 }
 
 .nav-link {
-    color:white;
+    color: white;
 }
 
 .nav-link:hover {
-    color:red;
+    color: red;
 }
 
 
 #Homepage-carousel {
-    width:400px;
-    height:600px;
+    width: 400px;
+    height: 600px;
 }
 
 .card-text {
-    text-align:left;
+    text-align: left;
 }
 
 img[alt="back-image"] {
-    height:200px;
-    width:150px;
- }
+    height: 200px;
+    width: 150px;
+}

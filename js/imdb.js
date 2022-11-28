@@ -1,34 +1,127 @@
 const showResultList = document.querySelector('#showResults');
 const actorResultList = document.querySelector('#actorResults');
 const searchResultList = document.querySelector('#searchResults');
+const seasonsResultList = document.querySelector('#seasonResults');
+const episodeResultList = document.querySelector('#episodeResults');
 const showUrl = 'https://api.tvmaze.com/shows';
 const actorsUrl = 'https://api.tvmaze.com/people?page=1&api-key=';
 
 
-function getSeasons(){
+function storeSeasonID() {
     const queryStr = seasonUrl;
     const usp = new URLSearchParams(queryStr);
+    const pageUrl = window.location.href;
+    const seasonsUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/seasons.html?'
 
+    console.log(pageUrl);
 
     const showID = usp.get('id');
-    const showName = usp.get('name');
+    console.log(`id = ${showID}`)
 
-    console.log(`id = ${showID} name = ${showName}`)
-
+    for (const [key, value] of usp) {
+        console.log(`${key} => ${value}`)
+    }
     console.log(usp.toString())
+
+    window.location.href = seasonsUrl + usp;
 }
 
+function storeEpisodeID() {
+    const episodeQueryStr = episodeUrl;
+    const usp = new URLSearchParams(episodeQueryStr);
+    const showUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/episodes.html?'
+    window.location.href = showUrl + usp;
+}
+
+function getSeasonData() {
+    console.log("Fetching season data....");
+
+    const url = window.location.href;
+
+    const searchParams = new URL(url).searchParams;
+    const urlSearchParams = new URLSearchParams(searchParams);
+    const seasonData = urlSearchParams.get('id');
+
+    console.log('Show = ' + seasonData);
+    const seasonUrl = 'https://api.tvmaze.com/shows/' + seasonData + '/seasons';
+    console.log(seasonUrl)
+
+
+    fetch(seasonUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach(function (value) {
+                console.log(value);
+                const seasonElement = `
+            <div class="col-md-3">
+                <div class="card bg-dark mb-3">
+                    <div class="card-body" onclick=" episodeUrl='id=${value.id}'; storeEpisodeID();"> 
+                        <div class="container">
+                            <h1 class="card-title" style="color:white;">${value.name}</h1>
+                            <div class="container"></div>
+                            <div class="row">
+                            <div class="col-2">
+                            <a target="_blank"><img alt="back-image" class="rounded mt-4" src="${value.image.medium}"></a>
+                            </div>
+                            </div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+                seasonsResultList.insertAdjacentHTML('beforeend', seasonElement);
+            });
+        });
+}
+
+function getEpisodeData() {
+    console.log("Fetching episode data....");
+
+    const url = window.location.href;
+
+    const searchParams = new URL(url).searchParams;
+    const urlSearchParams = new URLSearchParams(searchParams);
+    const episodeData = urlSearchParams.get('id');
+
+    console.log('Show = ' + episodeData);
+    const episodeUrl = 'https://api.tvmaze.com/seasons/' + episodeData + '/episodes';
+    console.log(showUrl)
+
+
+    fetch(episodeUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach(function (value) {
+                console.log(value);
+                const episodeElement = `
+            <div class="col-md-3">
+                <div class="card bg-dark mb-3">
+                    <div class="card-body"> 
+                        <div class="container">
+                            <h1 class="card-title" style="color:white;">${value.name}</h1>
+                            <div class="container"></div>
+                            <div class="row">
+                            <div class="col-2">
+                            <a target="_blank"><img alt="back-image" class="rounded mt-4" src="${value.image.medium}"></a>
+                            </div>
+                            </div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+                episodeResultList.insertAdjacentHTML('beforeend', episodeElement);
+            });
+        });
+}
 
 fetch(showUrl)
     .then((response) => response.json())
     .then((data) => {
-        // This is now a normal function
         data.forEach(function (value) {
             console.log(value);
             const showElement = `
             <div class="col-md-12">
                 <div class="card bg-dark mb-4">
-                    <div class="card-body" onclick=" seasonUrl= 'id=${value.id}&name=${value.name}'; getSeasons() ;"> 
+                    <div class="card-body" onclick=" seasonUrl='id=${value.id}'; storeSeasonID();"> 
                         <div class="container">
                             <h1 class="card-title" style="color:white;">${value.name}</h1>
                             <div class="container"></div>
@@ -55,23 +148,23 @@ fetch(showUrl)
             showResultList.insertAdjacentHTML('beforeend', showElement);
         });
     });
-    
-    fetch(actorsUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            // This is now a normal function
-            data.forEach(function (value) {
-                console.log(value);
-                const actorElement = `
+
+fetch(actorsUrl)
+    .then((response) => response.json())
+    .then((data) => {
+        // This is now a normal function
+        data.forEach(function (value) {
+            console.log(value);
+            const actorElement = `
                 <div class="col-md-4">
                     <div class="card bg-dark mb-4"><div class="card-body">
                     <h5 class="card-title" style="color:white;">${value.name}</h5>
                     <a href="results.html">
                     <img alt="back-image" class="rounded" src="${value.image.medium}">
                     </div></div></div>`;
-                actorResultList.insertAdjacentHTML('beforeend', actorElement);
-            });
+            actorResultList.insertAdjacentHTML('beforeend', actorElement);
         });
+    });
 
 
 
@@ -111,7 +204,7 @@ const searchShow = (event) => {
                     </div>
                 </div>
             </div>`;
-                searchResultList.insertAdjacentHTML('beforeend', searchElement); 
+                searchResultList.insertAdjacentHTML('beforeend', searchElement);
             });
         });
 }
