@@ -180,7 +180,7 @@ const searchShow = (event) => {
                 console.log(value);
                 const searchElement = `<div class="col-md-12">
                 <div class="card bg-dark mb-4">
-                    <div class="card-body"> 
+                    <div class="card-body" onclick=" seasonUrl='id=${value.show.id}'; storeSeasonID();"> 
                         <div class="container">
                             <h1 class="card-title" style="color:white;">${value.show.name}</h1>
                             <div class="container"></div>
