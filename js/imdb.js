@@ -10,7 +10,6 @@ const actorsUrl = 'https://api.tvmaze.com/people?page=1&api-key=';
 function storeSeasonID() {
     const queryStr = seasonUrl;
     const usp = new URLSearchParams(queryStr);
-    const pageUrl = window.location.href;
     const seasonsUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/seasons.html?'
     window.location.href = seasonsUrl + usp;
 }
