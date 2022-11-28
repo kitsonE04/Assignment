@@ -12,17 +12,6 @@ function storeSeasonID() {
     const usp = new URLSearchParams(queryStr);
     const pageUrl = window.location.href;
     const seasonsUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/seasons.html?'
-
-    console.log(pageUrl);
-
-    const showID = usp.get('id');
-    console.log(`id = ${showID}`)
-
-    for (const [key, value] of usp) {
-        console.log(`${key} => ${value}`)
-    }
-    console.log(usp.toString())
-
     window.location.href = seasonsUrl + usp;
 }
 
@@ -34,18 +23,11 @@ function storeEpisodeID() {
 }
 
 function getSeasonData() {
-    console.log("Fetching season data....");
-
     const url = window.location.href;
-
     const searchParams = new URL(url).searchParams;
     const urlSearchParams = new URLSearchParams(searchParams);
     const seasonData = urlSearchParams.get('id');
-
-    console.log('Show = ' + seasonData);
     const seasonUrl = 'https://api.tvmaze.com/shows/' + seasonData + '/seasons';
-    console.log(seasonUrl)
-
 
     fetch(seasonUrl)
         .then((response) => response.json())
@@ -74,18 +56,11 @@ function getSeasonData() {
 }
 
 function getEpisodeData() {
-    console.log("Fetching episode data....");
-
     const url = window.location.href;
-
     const searchParams = new URL(url).searchParams;
     const urlSearchParams = new URLSearchParams(searchParams);
     const episodeData = urlSearchParams.get('id');
-
-    console.log('Show = ' + episodeData);
     const episodeUrl = 'https://api.tvmaze.com/seasons/' + episodeData + '/episodes';
-    console.log(showUrl)
-
 
     fetch(episodeUrl)
         .then((response) => response.json())
