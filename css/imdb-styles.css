@@ -114,3 +114,13 @@ img[alt="back-image"] {
     height: 200px;
     width: 150px;
 }
+
+img[alt="episode-back-image"] {
+    height: 200px;
+    width: 250px;
+} 
+
+img[alt="season-back-image"] {
+    height: 250px;
+    width: 200px;
+}

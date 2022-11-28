@@ -38,11 +38,10 @@ function getSeasonData() {
                 <div class="card bg-dark mb-3">
                     <div class="card-body" onclick=" episodeUrl='id=${value.id}'; storeEpisodeID();"> 
                         <div class="container">
-                            <h1 class="card-title" style="color:white;">${value.name}</h1>
                             <div class="container"></div>
                             <div class="row">
                             <div class="col-2">
-                            <a target="_blank"><img alt="back-image" class="rounded mt-4" src="${value.image.medium}"></a>
+                            <a target="_blank"><img alt="season-back-image" class="rounded mt-3" src="${value.image.medium}"></a>
                             </div>
                             </div></div>
                         </div>
@@ -71,11 +70,11 @@ function getEpisodeData() {
                 <div class="card bg-dark mb-3">
                     <div class="card-body"> 
                         <div class="container">
-                            <h1 class="card-title" style="color:white;">${value.name}</h1>
+                            <h4 class="card-title" style="color:white;">SE${value.season}EP${value.number} ${value.name}</h4>
                             <div class="container"></div>
                             <div class="row">
-                            <div class="col-2">
-                            <a target="_blank"><img alt="back-image" class="rounded mt-4" src="${value.image.medium}"></a>
+                            <div class="col-12">
+                            <a target="_blank"><img alt="episode-back-image" class="rounded mt-4" src="${value.image.medium}"></a>
                             </div>
                             </div></div>
                         </div>
