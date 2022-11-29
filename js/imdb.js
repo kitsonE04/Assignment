@@ -3,8 +3,9 @@ const actorResultList = document.querySelector('#actorResults');
 const searchResultList = document.querySelector('#searchResults');
 const seasonsResultList = document.querySelector('#seasonResults');
 const episodeResultList = document.querySelector('#episodeResults');
+const episodeInfoResultList = document.querySelector('#episodeInfoResults');
 const showUrl = 'https://api.tvmaze.com/shows';
-const actorsUrl = 'https://api.tvmaze.com/people?page=1&api-key=';
+const actorsUrl = 'https://api.tvmaze.com/people?page=1';
 
 
 function storeSeasonID() {
@@ -18,6 +19,20 @@ function storeEpisodeID() {
     const episodeQueryStr = episodeUrl;
     const usp = new URLSearchParams(episodeQueryStr);
     const showUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/episodes.html?'
+    window.location.href = showUrl + usp;
+}
+
+function storeEpisodeInfoID(episodeUrl, episodeSeason, episodeNumber) {
+    const episodeInfoUrl = episodeUrl;
+    const episodeInfoSeason = episodeSeason;
+    const episodeInfoNumber = episodeNumber;
+    const query = new URLSearchParams({
+        id: episodeInfoUrl, 
+        season: episodeInfoSeason,
+        number: episodeInfoNumber,
+      });
+    const usp = query.toString();
+    const showUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/episodeInfo.html?'
     window.location.href = showUrl + usp;
 }
 
@@ -68,7 +83,7 @@ function getEpisodeData() {
                 const episodeElement = `
             <div class="col-md-3">
                 <div class="card bg-dark mb-3">
-                    <div class="card-body"> 
+                    <div class="card-body"  onclick="episodeUrl='${value.id}';episodeSeason='${value.season}';episodeNumber='${value.number}'; storeEpisodeInfoID(episodeUrl, episodeSeason, episodeNumber);"> 
                         <div class="container">
                             <h4 class="card-title" style="color:white;">SE${value.season}EP${value.number} ${value.name}</h4>
                             <div class="container"></div>
@@ -82,6 +97,27 @@ function getEpisodeData() {
                 </div>
             </div>`;
                 episodeResultList.insertAdjacentHTML('beforeend', episodeElement);
+            });
+        });
+}
+
+function getEpisodeInfoData() {
+    const url = window.location.href;
+    const searchParams = new URL(url).searchParams;
+    const urlSearchParams = new URLSearchParams(searchParams);
+    const episodeInfoData = urlSearchParams.get('id');
+    const seasonNumber = urlSearchParams.get('season');
+    const episodeNumber = urlSearchParams.get('number');
+    const episodeInfoUrl = 'https://api.tvmaze.com/shows/' + episodeInfoData + '/episodebynumber?season='+ seasonNumber +'&number='+ episodeNumber;
+    console.log(episodeInfoUrl);
+
+    fetch(episodeInfoUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach(function (value) {
+                console.log(value);
+                const episodeInfoElement = `<h4>${value.name}</h4>`;
+                episodeInfoResultList.insertAdjacentHTML('beforeend', episodeInfoElement);
             });
         });
 }
