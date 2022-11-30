@@ -111,7 +111,7 @@ function getEpisodeInfoData() {
     const episodeInfoUrl = 'https://api.tvmaze.com/shows/' + episodeInfoData + '/episodebynumber?season='+ seasonNumber +'&number='+ episodeNumber;
     console.log(episodeInfoUrl);
 
-    fetch(episodeInfoUrl)
+    fetch(episodeInfoUrl + apiKey)
         .then((response) => response.json())
         .then((data) => {
             data.forEach(function (value) {
