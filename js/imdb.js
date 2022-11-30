@@ -8,14 +8,14 @@ const showUrl = 'https://api.tvmaze.com/shows';
 const actorsUrl = 'https://api.tvmaze.com/people?page=1';
 
 
-function storeSeasonID() {
+function storeSeasonID(seasonUrl) {
     const queryStr = seasonUrl;
     const usp = new URLSearchParams(queryStr);
     const seasonsUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/seasons.html?'
     window.location.href = seasonsUrl + usp;
 }
 
-function storeEpisodeID() {
+function storeEpisodeID(episodeUrl) {
     const episodeQueryStr = episodeUrl;
     const usp = new URLSearchParams(episodeQueryStr);
     const showUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/episodes.html?'
@@ -51,7 +51,7 @@ function getSeasonData() {
                 const seasonElement = `
             <div class="col-md-3">
                 <div class="card bg-dark mb-3">
-                    <div class="card-body" onclick=" episodeUrl='id=${value.id}'; storeEpisodeID();"> 
+                    <div class="card-body" onclick=" episodeUrl='id=${value.id}'; storeEpisodeID(episodeUrl);"> 
                         <div class="container">
                             <div class="container"></div>
                             <div class="row">
@@ -111,7 +111,7 @@ function getEpisodeInfoData() {
     const episodeInfoUrl = 'https://api.tvmaze.com/shows/' + episodeInfoData + '/episodebynumber?season='+ seasonNumber +'&number='+ episodeNumber;
     console.log(episodeInfoUrl);
 
-    fetch(episodeInfoUrl + apiKey)
+    fetch(episodeInfoUrl)
         .then((response) => response.json())
         .then((data) => {
             data.forEach(function (value) {
@@ -130,7 +130,7 @@ fetch(showUrl)
             const showElement = `
             <div class="col-md-12">
                 <div class="card bg-dark mb-4">
-                    <div class="card-body" onclick=" seasonUrl='id=${value.id}'; storeSeasonID();"> 
+                    <div class="card-body" onclick=" seasonUrl='id=${value.id}'; storeSeasonID(seasonUrl);"> 
                         <div class="container">
                             <h1 class="card-title" style="color:white;">${value.name}</h1>
                             <div class="container"></div>
@@ -188,7 +188,7 @@ const searchShow = (event) => {
                 console.log(value);
                 const searchElement = `<div class="col-md-12">
                 <div class="card bg-dark mb-4">
-                    <div class="card-body" onclick=" seasonUrl='id=${value.show.id}'; storeSeasonID();"> 
+                    <div class="card-body" onclick=" seasonUrl='id=${value.show.id}'; storeSeasonID(seasonUrl);"> 
                         <div class="container">
                             <h1 class="card-title" style="color:white;">${value.show.name}</h1>
                             <div class="container"></div>
