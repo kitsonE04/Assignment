@@ -30,7 +30,7 @@ function storeEpisodeInfoID(episodeUrl, episodeSeason, episodeNumber) {
         id: episodeInfoUrl, 
         season: episodeInfoSeason,
         number: episodeInfoNumber,
-      });
+    });
     const usp = query.toString();
     const showUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/episodeInfo.html?'
     window.location.href = showUrl + usp;
