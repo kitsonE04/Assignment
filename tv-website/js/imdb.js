@@ -121,9 +121,19 @@ function getEpisodeInfoData() {
                             <div class="col-3">
                                 <img alt="info-image" id="episode-info-image" class="rounded mt-4" src="${data.image.original}">
                             </div>
-                            <div class="col-6">
+                            <div class="col-5">
                                 <p class="info-text">${data.summary}</p>
                             </div>
+                            <div class="col-4">
+                            <div class="text-bg-danger rounded p-3">
+                            <h4 class="stats-text" bg-black>
+                            <div class="row mb-2">Rating: ${data.rating.average}/10</div>
+                            <div class="row mb-2">Air Time: ${data.airtime}</div>
+                            <div class="row mb-2">Air Date: ${data.airdate}</div>
+                            <div class="row mb-2">Runtime: ${data.runtime} minutes</div>
+                            </h4></div>
+                            </div>
+
                         </div>
                 
                 

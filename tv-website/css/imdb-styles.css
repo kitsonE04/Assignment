@@ -6,6 +6,11 @@ nav .navbar-brand {
     font-family: 'Bangers', cursive;
 }
 
+.header-title {
+    font-family: 'Bangers', cursive;
+    font-family: 'Bebas Neue', cursive;
+}
+
 nav ul li a i {
     color: white;
     margin-right: 2px;
@@ -118,7 +123,7 @@ img[alt="back-image"] {
 img[alt="episode-back-image"] {
     height: 200px;
     width: 250px;
-} 
+}
 
 img[alt="season-back-image"] {
     height: 250px;
@@ -126,6 +131,18 @@ img[alt="season-back-image"] {
 }
 
 img[alt="info-image"] {
-    height: 500px;
-    width: 450px;
+    height: 400px;
+    width: 300px;
+}
+
+.footer {
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    background: rgb(16, 16, 16);
+    margin-left: 1px;
+}
+
+.trending-shows {
+    color: white;
 }
