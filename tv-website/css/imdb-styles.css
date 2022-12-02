@@ -124,3 +124,8 @@ img[alt="season-back-image"] {
     height: 250px;
     width: 200px;
 }
+
+img[alt="info-image"] {
+    height: 500px;
+    width: 450px;
+}

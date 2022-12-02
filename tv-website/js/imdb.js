@@ -11,14 +11,14 @@ const actorsUrl = 'https://api.tvmaze.com/people?page=1';
 function storeSeasonID(seasonUrl) {
     const queryStr = seasonUrl;
     const usp = new URLSearchParams(queryStr);
-    const seasonsUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/seasons.html?'
+    const seasonsUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/tv-website/seasons.html?'
     window.location.href = seasonsUrl + usp;
 }
 
 function storeEpisodeID(episodeUrl) {
     const episodeQueryStr = episodeUrl;
     const usp = new URLSearchParams(episodeQueryStr);
-    const showUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/episodes.html?'
+    const showUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/tv-website/episodes.html?'
     window.location.href = showUrl + usp;
 }
 
@@ -32,7 +32,7 @@ function storeEpisodeInfoID(episodeUrl, episodeSeason, episodeNumber) {
         number: episodeInfoNumber,
     });
     const usp = query.toString();
-    const showUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/episodeInfo.html?'
+    const showUrl = 'file:///C:/Users/nosti/University%20EK/IWD-Projects/assignment/tv-website/episodeInfo.html?'
     window.location.href = showUrl + usp;
 }
 
@@ -114,11 +114,22 @@ function getEpisodeInfoData() {
     fetch(episodeInfoUrl)
         .then((response) => response.json())
         .then((data) => {
-            data.forEach(function (value) {
-                console.log(value);
-                const episodeInfoElement = `<h4>${value.name}</h4>`;
+                console.log(data);
+                const episodeInfoElement = `
+                    <h1>SE${data.season}EP${data.number} ${data.name}</h1>
+                        <div class="row">
+                            <div class="col-3">
+                                <img alt="info-image" id="episode-info-image" class="rounded mt-4" src="${data.image.original}">
+                            </div>
+                            <div class="col-6">
+                                <p class="info-text">${data.summary}</p>
+                            </div>
+                        </div>
+                
+                
+                
+                `;
                 episodeInfoResultList.insertAdjacentHTML('beforeend', episodeInfoElement);
-            });
         });
 }
 
