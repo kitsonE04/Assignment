@@ -222,17 +222,38 @@ const searchShow = (event) => {
                             </div>
                             <div class="col-4" style="color:white">
                                 <div class="text-bg-danger rounded p-3">
-                                <h3 class="card-text" bg-black>
+                                <h4 class="card-text" bg-black>
                                 <div class="row mb-2">Rating: ${value.show.rating.average}/10</div>
                                 <div class="row mb-2">Genre: ${value.show.genres}</div>
                                 <div class="row mb-2">Status: ${value.show.status}</div>
                                 <div class="row mb-2">Runtime: ${value.show.averageRuntime} minutes</div>
-                                </h3></div>
+                                </h4></div>
                             </div></div>
                         </div>
                     </div>
                 </div>
             </div>`;
+                searchResultList.insertAdjacentHTML('beforeend', searchElement);
+            });
+        });
+}
+
+const searchActors = (event) => {
+    event.preventDefault();
+    const keyword = document.querySelector('#keywords').value;
+    const url = 'https://api.tvmaze.com/search/people?q=' + keyword;
+    searchResultList.innerHTML = '';
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach(function (value) {
+                console.log(value);
+                const searchElement = `<div class="col-md-4">
+                <div class="card bg-dark mb-4"><div class="card-body">
+                <h5 class="card-title" style="color:white;">${value.person.name}</h5>
+                <a href="results.html">
+                <img alt="back-image" class="rounded" src="${value.person.image.medium}">
+                </div></div></div>`;
                 searchResultList.insertAdjacentHTML('beforeend', searchElement);
             });
         });
