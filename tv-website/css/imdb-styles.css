@@ -11,6 +11,13 @@ nav .navbar-brand {
     font-family: 'Bebas Neue', cursive;
 }
 
+.homePage-introduction {
+    text-align: center;
+    color:white;
+    background-color: darkred;
+    padding: 0;
+}
+
 nav ul li a i {
     color: white;
     margin-right: 2px;
@@ -22,6 +29,7 @@ nav ul li a i {
     background-position: center bottom;
     background-size: cover;
     color: rgb(255, 255, 255);
+    filter: blur(0.1px);
 }
 
 #tv-shows .jumbotron {
