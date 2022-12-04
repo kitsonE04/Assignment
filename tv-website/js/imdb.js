@@ -4,8 +4,8 @@ const searchResultList = document.querySelector('#searchResults');
 const seasonsResultList = document.querySelector('#seasonResults');
 const episodeResultList = document.querySelector('#episodeResults');
 const episodeInfoResultList = document.querySelector('#episodeInfoResults');
-const showUrl = 'https://api.tvmaze.com/shows';
-const actorsUrl = 'https://api.tvmaze.com/people?page=1';
+
+
 
 
 function storeSeasonID(seasonUrl) {
@@ -27,7 +27,7 @@ function storeEpisodeInfoID(episodeUrl, episodeSeason, episodeNumber) {
     const episodeInfoSeason = episodeSeason;
     const episodeInfoNumber = episodeNumber;
     const query = new URLSearchParams({
-        id: episodeInfoUrl, 
+        id: episodeInfoUrl,
         season: episodeInfoSeason,
         number: episodeInfoNumber,
     });
@@ -108,14 +108,14 @@ function getEpisodeInfoData() {
     const episodeInfoData = urlSearchParams.get('id');
     const seasonNumber = urlSearchParams.get('season');
     const episodeNumber = urlSearchParams.get('number');
-    const episodeInfoUrl = 'https://api.tvmaze.com/shows/' + episodeInfoData + '/episodebynumber?season='+ seasonNumber +'&number='+ episodeNumber;
+    const episodeInfoUrl = 'https://api.tvmaze.com/shows/' + episodeInfoData + '/episodebynumber?season=' + seasonNumber + '&number=' + episodeNumber;
     console.log(episodeInfoUrl);
 
     fetch(episodeInfoUrl)
         .then((response) => response.json())
         .then((data) => {
-                console.log(data);
-                const episodeInfoElement = `
+            console.log(data);
+            const episodeInfoElement = `
                     <h1>SE${data.season}EP${data.number} ${data.name}</h1>
                         <div class="row">
                             <div class="col-3">
@@ -139,16 +139,18 @@ function getEpisodeInfoData() {
                 
                 
                 `;
-                episodeInfoResultList.insertAdjacentHTML('beforeend', episodeInfoElement);
+            episodeInfoResultList.insertAdjacentHTML('beforeend', episodeInfoElement);
         });
 }
 
-fetch(showUrl)
-    .then((response) => response.json())
-    .then((data) => {
-        data.forEach(function (value) {
-            console.log(value);
-            const showElement = `
+function getTvShows() {
+    const showUrl = 'https://api.tvmaze.com/shows';
+    fetch(showUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach(function (value) {
+                console.log(value);
+                const showElement = `
             <div class="col-md-12">
                 <div class="card bg-dark mb-4">
                     <div class="card-body" onclick=" seasonUrl='id=${value.id}'; storeSeasonID(seasonUrl);"> 
@@ -175,11 +177,14 @@ fetch(showUrl)
                     </div>
                 </div>
             </div>`;
-            showResultList.insertAdjacentHTML('beforeend', showElement);
+                showResultList.insertAdjacentHTML('beforeend', showElement);
+            });
         });
-    });
+}
 
-fetch(actorsUrl)
+function getActors() {
+    const actorsUrl = 'https://api.tvmaze.com/people?page=1';
+    fetch(actorsUrl)
     .then((response) => response.json())
     .then((data) => {
         data.forEach(function (value) {
@@ -188,13 +193,12 @@ fetch(actorsUrl)
                 <div class="col-md-4">
                     <div class="card bg-dark mb-4"><div class="card-body">
                     <h5 class="card-title" style="color:white;">${value.name}</h5>
-                    <a href="results.html">
                     <img alt="back-image" class="rounded" src="${value.image.medium}">
                     </div></div></div>`;
             actorResultList.insertAdjacentHTML('beforeend', actorElement);
         });
     });
-
+}
 
 
 const searchShow = (event) => {
@@ -251,7 +255,6 @@ const searchActors = (event) => {
                 const searchElement = `<div class="col-md-4">
                 <div class="card bg-dark mb-4"><div class="card-body">
                 <h5 class="card-title" style="color:white;">${value.person.name}</h5>
-                <a href="results.html">
                 <img alt="back-image" class="rounded" src="${value.person.image.medium}">
                 </div></div></div>`;
                 searchResultList.insertAdjacentHTML('beforeend', searchElement);
