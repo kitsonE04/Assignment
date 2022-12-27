@@ -11,14 +11,14 @@ const episodeInfoResultList = document.querySelector('#episodeInfoResults');
 function storeSeasonID(seasonUrl) {
     const queryStr = seasonUrl;
     const usp = new URLSearchParams(queryStr);
-    const seasonsUrl = 'http://ethankitson.uosweb.co.uk/seasons.html?'
+    const seasonsUrl = 'http://ethankitson.uosweb.co.uk/tv-website/seasons.html?'
     window.location.href = seasonsUrl + usp;
 }
 
 function storeEpisodeID(episodeUrl) {
     const episodeQueryStr = episodeUrl;
     const usp = new URLSearchParams(episodeQueryStr);
-    const showUrl = 'http://ethankitson.uosweb.co.uk/episodes.html?'
+    const showUrl = 'http://ethankitson.uosweb.co.uk/tv-website/episodes.html?'
     window.location.href = showUrl + usp;
 }
 
@@ -32,7 +32,7 @@ function storeEpisodeInfoID(episodeUrl, episodeSeason, episodeNumber) {
         number: episodeInfoNumber,
     });
     const usp = query.toString();
-    const showUrl = 'http://ethankitson.uosweb.co.uk/episodeInfo.html?'
+    const showUrl = 'http://ethankitson.uosweb.co.uk/tv-website/episodeInfo.html?'
     window.location.href = showUrl + usp;
 }
 
