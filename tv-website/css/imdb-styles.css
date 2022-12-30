@@ -130,6 +130,11 @@ p {
     height: 600px;
 }
 
+#actors-carousel {
+    width: 400px;
+    height: 600px;
+}
+
 .card-text {
     text-align: left;
 }
