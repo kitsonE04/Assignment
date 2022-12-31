@@ -175,6 +175,9 @@ img[alt="homepage-image"] {
 .trending-shows {
     color: white;
 }
+.trending-actors {
+    color: white;
+}
 
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
